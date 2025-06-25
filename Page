@@ -3,123 +3,462 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REACT – Responsible and Adaptive robots in Complex seTtings</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>REACT – Responsible and Adaptive Robots in Complex Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --navy-primary: #003366;
+      --navy-light: #336699;
+      --navy-accent: #4d79a4;
+      --text-primary: #212529;
+      --text-secondary: #495057;
+      --text-light: #6c757d;
+      --background-white: #ffffff;
+      --background-light: #f8f9fa;
+      --border-light: #e9ecef;
+      --shadow-soft: 0 2px 8px rgba(0, 51, 102, 0.08);
+      --shadow-medium: 0 4px 16px rgba(0, 51, 102, 0.12);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --space-xs: 0.5rem;
+      --space-s: 1rem;
+      --space-m: 1.5rem;
+      --space-l: 2rem;
+      --space-xl: 3rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: var(--background-white);
+      color: var(--text-primary);
       line-height: 1.6;
-      background-color: white;
-      color: #111;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-s);
     }
 
     header {
+      background: linear-gradient(135deg, var(--background-white) 0%, var(--background-light) 100%);
+      padding: var(--space-xl) 0;
       text-align: center;
-      padding: 20px;
-      border-bottom: 4px solid navy;
+      position: relative;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-soft);
     }
 
-    header img:first-child {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto;
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-m);
     }
 
-    header img:last-child {
-      max-width: 100px;
-      margin-top: 10px;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-l);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
+    .logo-placeholder {
+      width: 180px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-primary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      box-shadow: var(--shadow-medium);
+      transition: var(--transition-smooth);
+    }
+
+    .logo-placeholder:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 51, 102, 0.15);
+    }
+
+    .rai-logo {
+      width: 80px;
+      height: 60px;
+      background: var(--background-white);
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow-soft);
+    }
+
+    h1 {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 600;
+      color: var(--navy-primary);
+      margin: 0;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: 600px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    nav {
+      background-color: var(--navy-primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .nav-container {
       display: flex;
       justify-content: center;
-      background-color: navy;
+      align-items: center;
+      min-height: 60px;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
       margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
     }
 
-    nav ul li {
-      margin: 0 15px;
+    .nav-item {
+      position: relative;
     }
 
-    nav ul li a {
+    .nav-link {
+      display: block;
+      padding: var(--space-s) var(--space-m);
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .nav-link:hover::before {
+      left: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+      outline: 2px solid rgba(255, 255, 255, 0.3);
+      outline-offset: -2px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--navy-accent);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 80%;
     }
 
     main {
-      padding: 20px;
+      padding: var(--space-xl) 0;
+    }
+
+    .main-grid {
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: 1fr;
     }
 
     section {
-      margin-bottom: 40px;
+      background: var(--background-white);
+      border-radius: 16px;
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-light);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy-primary), var(--navy-light), var(--navy-accent));
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    h2 {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      color: var(--navy-primary);
+      margin: 0 0 var(--space-m) 0;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--navy-accent);
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin: 0;
+      max-width: 65ch;
+    }
+
+    .contact-info {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-s);
+      background: var(--background-light);
+      padding: var(--space-s) var(--space-m);
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      transition: var(--transition-smooth);
+    }
+
+    .contact-info:hover {
+      background: var(--navy-primary);
+      color: white;
+      transform: translateX(4px);
     }
 
     footer {
-      text-align: center;
-      padding: 15px;
-      background-color: navy;
+      background: linear-gradient(135deg, var(--navy-primary), var(--navy-light));
       color: white;
+      text-align: center;
+      padding: var(--space-l) 0;
+      margin-top: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .footer-content {
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--space-s);
+      }
+
+      .header-content {
+        gap: var(--space-s);
+      }
+
+      .logo-container {
+        flex-direction: column;
+        gap: var(--space-s);
+      }
+
+      .nav-list {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+
+      .nav-link {
+        padding: var(--space-s);
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: var(--space-l);
+        border-radius: 12px;
+      }
+
+      .main-grid {
+        gap: var(--space-l);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .main-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-l);
+      }
+
+      .nav-list {
+        gap: var(--space-s);
+      }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus indicators for keyboard navigation */
+    *:focus {
+      outline: 3px solid var(--navy-accent);
+      outline-offset: 2px;
+    }
+
+    /* Smooth scrolling for internal links */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="REACT_logo.png" alt="REACT Logo">
-    <h1>REACT</h1>
-    <p>REsponsible and Adaptive robots in Complex seTtings</p>
-    <img src="RAiUK_Logo.jpg" alt="RAI Logo">
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#datasets">Datasets</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-placeholder">REACT Logo</div>
+          <div class="rai-logo">RAI Logo</div>
+        </div>
+        <h1>REACT</h1>
+        <p class="subtitle">REsponsible and Adaptive robots in Complex seTtings</p>
+      </div>
+    </div>
   </header>
 
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
+          <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
+          <li class="nav-item"><a href="#datasets" class="nav-link">Datasets</a></li>
+          <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <main>
-    <section id="about">
-      <h2>About the Project</h2>
-      <p>REACT aims to develop responsible and adaptive robotic systems that can operate in complex social and healthcare environments.</p>
-    </section>
+    <div class="container">
+      <div class="main-grid">
+        <section id="about">
+          <h2>About the Project</h2>
+          <p>REACT aims to develop responsible and adaptive robotic systems that can operate in complex social and healthcare environments. Our research focuses on creating intelligent systems that understand context, adapt to changing conditions, and maintain ethical standards in human-robot interactions.</p>
+        </section>
 
-    <section id="team">
-      <h2>Team Members</h2>
-      <p>Meet the multidisciplinary team behind REACT.</p>
-    </section>
+        <section id="team">
+          <h2>Team Members</h2>
+          <p>Meet the multidisciplinary team behind REACT. Our researchers bring expertise from robotics, artificial intelligence, human-computer interaction, psychology, and ethics to create comprehensive solutions for complex real-world challenges.</p>
+        </section>
 
-    <section id="research">
-      <h2>Research</h2>
-      <p>Explore our research goals, publications, and ongoing studies related to adaptive robotics, HCI, and neurotechnology.</p>
-    </section>
+        <section id="research">
+          <h2>Research</h2>
+          <p>Explore our research goals, publications, and ongoing studies related to adaptive robotics, HCI, and neurotechnology. We investigate how robots can learn from human behavior, adapt to social contexts, and maintain safety in unpredictable environments.</p>
+        </section>
 
-    <section id="datasets">
-      <h2>Datasets</h2>
-      <p>Access datasets generated through our research, available for open use under appropriate ethical guidelines.</p>
-    </section>
+        <section id="datasets">
+          <h2>Datasets</h2>
+          <p>Access datasets generated through our research, available for open use under appropriate ethical guidelines. Our data contributes to the global research community working on responsible AI and adaptive robotics systems.</p>
+        </section>
 
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <p>A showcase of images and videos from our labs, workshops, and research activities.</p>
-    </section>
+        <section id="gallery">
+          <h2>Gallery</h2>
+          <p>A showcase of images and videos from our labs, workshops, and research activities. Discover the cutting-edge facilities and collaborative environments where breakthrough research happens.</p>
+        </section>
 
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Email: example@example.com</p>
-    </section>
+        <section id="contact">
+          <h2>Contact Us</h2>
+          <div class="contact-info">
+            <span>📧</span>
+            <span>Email: example@example.com</span>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 REACT Project</p>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 REACT Project. Building the future of responsible robotics.</p>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
