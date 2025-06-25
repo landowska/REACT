@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REACT – Responsible and Adaptive robots in Complex seTtings</title>
-  <link rel="stylesheet" href="style.css">
+  <title>REACT – Responsible and Adaptive Robots in Complex Settings</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      line-height: 1.6;
       background-color: white;
       color: #111;
     }
@@ -70,21 +69,22 @@
 </head>
 <body>
   <header>
-    <img src="REACT_logo.png" alt="REACT Logo">
+    <img src="REACT/Website/Images/REACT_logo.png" alt="REACT Logo">
     <h1>REACT</h1>
     <p>REsponsible and Adaptive robots in Complex seTtings</p>
-    <img src="RAiUK_Logo.jpg" alt="RAI Logo">
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#datasets">Datasets</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <img src="REACT/Website/Images/RAiUK_Logo.jpg" alt="RAI Logo">
   </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
   <main>
     <section id="about">
