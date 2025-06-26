@@ -314,13 +314,62 @@
       transform: translateX(4px);
     }
 
+    /* Gallery Links */
+    .gallery-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-l);
+      margin-top: var(--space-l);
+    }
+
+    .gallery-link-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-m);
+      padding: var(--space-l);
+      background: var(--background-white);
+      border: 2px solid var(--border-light);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-link-btn:hover {
+      border-color: var(--navy-accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      background: rgba(77, 121, 164, 0.05);
+    }
+
+    .gallery-link-btn span {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .link-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .link-description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
     footer {
-      background: linear-gradient(135deg, var(--navy-primary), var(--navy-light));
-      color: white;
+      background: #ffffff !important;
+      color: var(--text-primary);
       text-align: center;
       padding: var(--space-xl) 0;
       margin-top: var(--space-xl);
       position: relative;
+      border-top: 4px solid var(--navy-primary);
+      box-shadow: 0 -2px 8px rgba(0, 51, 102, 0.08);
       overflow: hidden;
     }
 
@@ -331,7 +380,7 @@
       left: -100%;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(90deg, transparent, var(--navy-accent), transparent);
       animation: shimmer 3s infinite;
     }
 
@@ -344,6 +393,7 @@
       font-weight: 300;
       letter-spacing: 0.01em;
       margin-bottom: var(--space-l);
+      color: var(--text-secondary);
     }
 
     .partner-logos {
@@ -354,7 +404,8 @@
       flex-wrap: wrap;
       margin-top: var(--space-l);
       padding-top: var(--space-l);
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: 1px solid var(--border-light);
+      background: #ffffff !important;
     }
 
     .partner-logo {
@@ -395,218 +446,7 @@
     .partner-logo:nth-child(5)::before { content: 'Open Uni'; }
     .partner-logo:nth-child(6)::before { content: 'UKRI'; }
 
-    /* Gallery Modal Styles */
-    .gallery-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--space-m);
-      margin-top: var(--space-l);
-    }
-
-    .gallery-preview-item {
-      height: 150px;
-      background: var(--background-light);
-      border-radius: 8px;
-      border: 2px dashed var(--border-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-size: 0.9rem;
-      transition: var(--transition-smooth);
-    }
-
-    .gallery-preview-item:hover {
-      border-color: var(--navy-accent);
-      background: rgba(77, 121, 164, 0.1);
-    }
-
-    .view-gallery-btn {
-      background: var(--navy-primary);
-      color: white;
-      border: none;
-      padding: var(--space-m) var(--space-l);
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      margin-top: var(--space-l);
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-s);
-    }
-
-    .view-gallery-btn:hover {
-      background: var(--navy-light);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-    }
-
-    .modal.show {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background: var(--background-white);
-      margin: auto;
-      padding: 0;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 1200px;
-      max-height: 90vh;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    }
-
-    .modal-header {
-      background: var(--navy-primary);
-      color: white;
-      padding: var(--space-l);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .modal-header h3 {
-      margin: 0;
-      font-family: 'Crimson Text', serif;
-      font-size: 1.5rem;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-smooth);
-    }
-
-    .close-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .gallery-tabs {
-      display: flex;
-      background: var(--background-light);
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .tab-button {
-      flex: 1;
-      padding: var(--space-m);
-      background: none;
-      border: none;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      border-bottom: 3px solid transparent;
-    }
-
-    .tab-button.active {
-      color: var(--navy-primary);
-      border-bottom-color: var(--navy-accent);
-      background: var(--background-white);
-    }
-
-    .tab-button:hover {
-      background: rgba(77, 121, 164, 0.1);
-    }
-
-    .gallery-content {
-      padding: var(--space-l);
-      max-height: 60vh;
-      overflow-y: auto;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--space-m);
-    }
-
-    .gallery-item {
-      aspect-ratio: 1;
-      background: var(--background-light);
-      border-radius: 8px;
-      border: 2px dashed var(--border-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-size: 0.8rem;
-      text-align: center;
-      transition: var(--transition-smooth);
-      cursor: pointer;
-    }
-
-    .gallery-item:hover {
-      border-color: var(--navy-accent);
-      background: rgba(77, 121, 164, 0.1);
-      transform: scale(1.05);
-    }
-
-    .gallery-item img,
-    .gallery-item video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .modal-content {
-        width: 95%;
-        margin: var(--space-s);
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-      
-      .modal-header {
-        padding: var(--space-m);
-      }
-      
-      .gallery-content {
-        padding: var(--space-m);
-      }
-    }
+    /* Responsive Design */
     @media (max-width: 768px) {
       .container {
         padding: 0 var(--space-s);
@@ -916,49 +756,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    // Gallery Modal Functions
-    function openGalleryModal() {
-      document.getElementById('galleryModal').classList.add('show');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    function closeGalleryModal() {
-      document.getElementById('galleryModal').classList.remove('show');
-      document.body.style.overflow = 'auto'; // Restore scrolling
-    }
-
-    function showTab(tabName) {
-      // Hide all tab contents
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabContents.forEach(content => content.classList.remove('active'));
-      
-      // Remove active class from all tab buttons
-      const tabButtons = document.querySelectorAll('.tab-button');
-      tabButtons.forEach(button => button.classList.remove('active'));
-      
-      // Show selected tab content
-      document.getElementById(tabName + '-content').classList.add('active');
-      
-      // Add active class to clicked button
-      event.target.classList.add('active');
-    }
-
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-      const modal = document.getElementById('galleryModal');
-      if (event.target === modal) {
-        closeGalleryModal();
-      }
-    }
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeGalleryModal();
-      }
-    });
-  </script>
 </body>
 </html>
