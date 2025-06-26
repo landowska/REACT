@@ -49,8 +49,7 @@
 
     header {
       background: linear-gradient(135deg, var(--background-white) 0%, var(--background-light) 100%);
-      padding: var(--space-xl) 0;
-      text-align: center;
+      padding: var(--space-l) 0;
       position: relative;
       border-bottom: 1px solid var(--border-light);
       box-shadow: var(--shadow-soft);
@@ -58,25 +57,18 @@
 
     .header-content {
       display: flex;
-      flex-direction: column;
       align-items: center;
       gap: var(--space-m);
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: var(--space-l);
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .logo-main {
-      max-width: 200px;
+      max-width: 80px;
       height: auto;
       transition: var(--transition-smooth);
       border-radius: 8px;
       box-shadow: var(--shadow-soft);
+      flex-shrink: 0;
     }
 
     .logo-main:hover {
@@ -84,20 +76,13 @@
       box-shadow: var(--shadow-medium);
     }
 
-    .logo-rai {
-      max-width: 100px;
-      height: auto;
-      transition: var(--transition-smooth);
-      border-radius: 4px;
-    }
-
-    .logo-rai:hover {
-      transform: scale(1.05);
+    .header-text {
+      flex-shrink: 0;
     }
 
     h1 {
       font-family: 'Crimson Text', Georgia, serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 600;
       color: var(--navy-primary);
       margin: 0;
@@ -109,7 +94,6 @@
       font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--text-secondary);
       margin: 0;
-      max-width: 600px;
       font-weight: 300;
       letter-spacing: 0.01em;
     }
@@ -254,8 +238,60 @@
       font-size: 1.1rem;
       line-height: 1.7;
       color: var(--text-primary);
-      margin: 0;
+      margin: 0 0 var(--space-m) 0;
       max-width: 65ch;
+    }
+
+    .team-grid {
+      display: grid;
+      gap: var(--space-l);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: var(--space-l);
+    }
+
+    .team-member {
+      background: var(--background-light);
+      padding: var(--space-l);
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+      transition: var(--transition-smooth);
+    }
+
+    .team-member:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+      background: var(--background-white);
+    }
+
+    .member-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .member-affiliation {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-s) 0;
+      line-height: 1.4;
+    }
+
+    .member-email {
+      font-size: 0.9rem;
+      color: var(--navy-accent);
+      text-decoration: none;
+      padding: var(--space-xs) var(--space-s);
+      background: rgba(77, 121, 164, 0.1);
+      border-radius: 6px;
+      display: inline-block;
+      transition: var(--transition-smooth);
+    }
+
+    .member-email:hover {
+      background: var(--navy-accent);
+      color: white;
+      transform: translateX(2px);
     }
 
     .contact-info {
@@ -279,7 +315,7 @@
       background: linear-gradient(135deg, var(--navy-primary), var(--navy-light));
       color: white;
       text-align: center;
-      padding: var(--space-l) 0;
+      padding: var(--space-xl) 0;
       margin-top: var(--space-xl);
       position: relative;
       overflow: hidden;
@@ -304,6 +340,33 @@
     .footer-content {
       font-weight: 300;
       letter-spacing: 0.01em;
+      margin-bottom: var(--space-l);
+    }
+
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-l);
+      flex-wrap: wrap;
+      margin-top: var(--space-l);
+      padding-top: var(--space-l);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .partner-logo {
+      max-height: 60px;
+      max-width: 150px;
+      height: auto;
+      width: auto;
+      opacity: 0.8;
+      transition: var(--transition-smooth);
+      border-radius: 4px;
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
     }
 
     /* Responsive Design */
@@ -316,9 +379,16 @@
         gap: var(--space-s);
       }
 
-      .logo-container {
-        flex-direction: column;
-        gap: var(--space-s);
+      .header-text {
+        min-width: auto;
+      }
+
+      .logo-main {
+        max-width: 60px;
+      }
+
+      h1 {
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
       }
 
       .nav-list {
@@ -339,6 +409,20 @@
 
       .main-grid {
         gap: var(--space-l);
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-m);
+      }
+
+      .partner-logos {
+        gap: var(--space-m);
+      }
+
+      .partner-logo {
+        max-height: 50px;
+        max-width: 120px;
       }
     }
 
@@ -374,19 +458,37 @@
     html {
       scroll-behavior: smooth;
     }
+
+    /* Placeholder for images */
+    .logo-main, .partner-logo {
+      background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #666;
+      text-align: center;
+    }
+
+    .logo-main::before {
+      content: 'REACT Logo';
+    }
+
+    .partner-logo::before {
+      content: 'Logo';
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
       <div class="header-content">
-        <div class="logo-container">
-          <!-- Fixed image paths - now pointing to /images/ folder -->
-          <img src="images/REACT_logo.png" alt="REACT Logo" class="logo-main">
-          <img src="images/RAiUK_Logo.jpg" alt="RAI UK Logo" class="logo-rai">
+        <div class="logo-main"></div>
+        <div class="header-text">
+          <h1>REACT</h1>
+          <p class="subtitle">REsponsible and Adaptive robots in Complex seTtings</p>
         </div>
-        <h1>REACT</h1>
-        <p class="subtitle">REsponsible and Adaptive robots in Complex seTtings</p>
       </div>
     </div>
   </header>
@@ -396,10 +498,10 @@
       <div class="nav-container">
         <ul class="nav-list">
           <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
           <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
           <li class="nav-item"><a href="#datasets" class="nav-link">Datasets</a></li>
           <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
@@ -412,26 +514,121 @@
         <section id="about">
           <h2>About the Project</h2>
           <p>REACT aims to develop responsible and adaptive robotic systems that can operate in complex social and healthcare environments. Our research focuses on creating intelligent systems that understand context, adapt to changing conditions, and maintain ethical standards in human-robot interactions.</p>
-        </section>
-
-        <section id="team">
-          <h2>Team Members</h2>
-          <p>Meet the multidisciplinary team behind REACT. Our researchers bring expertise from robotics, artificial intelligence, human-computer interaction, psychology, and ethics to create comprehensive solutions for complex real-world challenges.</p>
+          <p>This multidisciplinary project addresses the increasing demand for care in ageing societies and the shortage of available human caregivers. By developing multimodal multi-agent robotic systems that can understand and adapt to human needs, we aim to enhance the quality and efficiency of care without replacing essential human interaction.</p>
         </section>
 
         <section id="research">
           <h2>Research</h2>
           <p>Explore our research goals, publications, and ongoing studies related to adaptive robotics, HCI, and neurotechnology. We investigate how robots can learn from human behavior, adapt to social contexts, and maintain safety in unpredictable environments.</p>
+          <p>Our approach combines co-design with stakeholders, real-world scenario prototyping, physiological and behavioural sensing, and explainable adaptive AI. The project is structured into five work packages with co-creation embedded throughout all stages.</p>
         </section>
 
         <section id="datasets">
           <h2>Datasets</h2>
           <p>Access datasets generated through our research, available for open use under appropriate ethical guidelines. Our data contributes to the global research community working on responsible AI and adaptive robotics systems.</p>
+          <p>The project will produce multimodal datasets that integrate neurophysiological and behavioural data, along with AI models that interpret user preferences, emotional states, and care-related requirements.</p>
         </section>
 
         <section id="gallery">
           <h2>Gallery</h2>
           <p>A showcase of images and videos from our labs, workshops, and research activities. Discover the cutting-edge facilities and collaborative environments where breakthrough research happens.</p>
+        </section>
+
+        <section id="team">
+          <h2>Team Members</h2>
+          <p>Meet the multidisciplinary team behind REACT. Our researchers bring expertise from robotics, artificial intelligence, human-computer interaction, psychology, and ethics to create comprehensive solutions for complex real-world challenges.</p>
+          
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="member-name">Aleksandra Landowska</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:aleksandra.landowska@nottingham.ac.uk" class="member-email">aleksandra.landowska@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Aislinn D Gomez Bergin</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:aislinn.bergin@nottingham.ac.uk" class="member-email">aislinn.bergin@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Ayodeji O. Abioye</div>
+              <div class="member-affiliation">School of Computing and Communications, The Open University</div>
+              <a href="mailto:ayodeji.abioye@open.ac.uk" class="member-email">ayodeji.abioye@open.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Jayati Deshmukh</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:j.deshmukh@soton.ac.uk" class="member-email">j.deshmukh@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Andriana Boudouraki</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:andriana.boudouraki@nottingham.ac.uk" class="member-email">andriana.boudouraki@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Maria Waheed</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:maria.waheed@nottingham.ac.uk" class="member-email">maria.waheed@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Athina Georgara</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:a.georgara@soton.ac.uk" class="member-email">a.georgara@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Dominic Price</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:dominic.price@nottingham.ac.uk" class="member-email">dominic.price@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Tuyen Nguyen</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:tuyen.nguyen@soton.ac.uk" class="member-email">tuyen.nguyen@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Shuang Ao</div>
+              <div class="member-affiliation">Responsible AI, University of Southampton</div>
+              <a href="mailto:s.ao@soton.ac.uk" class="member-email">s.ao@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Lokesh Singh</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:lb5e23@soton.ac.uk" class="member-email">lb5e23@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Yi Dong</div>
+              <div class="member-affiliation">University of Liverpool</div>
+              <a href="mailto:yi.dong@liverpool.ac.uk" class="member-email">yi.dong@liverpool.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Rafael Mestre</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:r.mestre@soton.ac.uk" class="member-email">r.mestre@soton.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Joel E. Fischer</div>
+              <div class="member-affiliation">School of Computer Science, University of Nottingham</div>
+              <a href="mailto:joel.fischer@nottingham.ac.uk" class="member-email">joel.fischer@nottingham.ac.uk</a>
+            </div>
+
+            <div class="team-member">
+              <div class="member-name">Sarvapali D. Ramchurn</div>
+              <div class="member-affiliation">School of Electronics and Computer Science, University of Southampton</div>
+              <a href="mailto:sdr1@soton.ac.uk" class="member-email">sdr1@soton.ac.uk</a>
+            </div>
+          </div>
         </section>
 
         <section id="contact">
@@ -449,6 +646,16 @@
     <div class="container">
       <div class="footer-content">
         <p>&copy; 2025 REACT Project. Building the future of responsible robotics.</p>
+        <p>Supported by the Engineering and Physical Sciences Research Council [grant number EP/Y009800/1], through funding from Responsible AI UK (KP0016).</p>
+      </div>
+      
+      <div class="partner-logos">
+        <div class="partner-logo">RAI UK</div>
+        <div class="partner-logo">UoN</div>
+        <div class="partner-logo">UoS</div>
+        <div class="partner-logo">UoL</div>
+        <div class="partner-logo">Open Uni</div>
+        <div class="partner-logo">UKRI</div>
       </div>
     </div>
   </footer>
